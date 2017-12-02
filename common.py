@@ -1,4 +1,7 @@
 def str_2_ilist(str_list):
+    """
+    '1234' -> [1,2,3,4]
+    """
     return list(map(int, str_list))
 
 
