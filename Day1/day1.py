@@ -8,7 +8,7 @@ import argparse
 parser = argparse.ArgumentParser(description="Advent of Code 2017: day 1")
 parser.add_argument('-f', '--file', dest='filename', type=str, help="Input sequence from file")
 parser.add_argument('-s', '--sequence', dest='sequence', type=str, help='Input sequence from console')
-parser.add_argument('-p', '--part', dest='part', type=str, required=True, help="Part of the problem to solve")
+parser.add_argument('-p', '--part', dest='part', choices=['1','2'], type=str, required=True, help="Part of the problem to solve")
 
 def part_1(captcha):
     """
