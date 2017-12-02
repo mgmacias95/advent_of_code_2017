@@ -7,4 +7,4 @@ Each day is located in a subdirectory. For example, the solution for the day one
 * `-h` to display a help message.
 * `-s <sequence>` to solve the problem with `<sequence>` sequence.
 * `-f <filename>` to solve the problem with the sequence in `<filename>` file.
-* `-p` to specify which part (1 or 2) to solve.
+* `-p <part>` to specify which part (1 or 2) to solve.
