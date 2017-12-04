@@ -22,4 +22,11 @@ def test_day2_part1():
                   [7,5,3],
                   [2,4,6,8]], '1') == 18
     
-    assert day_2(read_input_file_matrix('Day2/input'), '2') == 34581
+    assert day_2(read_input_file_matrix('Day2/input'), '1') == 34581
+
+def test_day2_part2():
+    assert day_2([[5,9,2,8],
+                 [9,4,7,3],
+                 [3,8,6,5]], '2') == 9
+
+    assert day_2(read_input_file_matrix('Day2/input'), '2') == 214
