@@ -1,14 +1,10 @@
 import sys
 sys.path.append('..')
-from common import read_input_file_integers, str_2_ilist
+from common import read_input_file_integers, str_2_ilist, basic_arguments
 from operator import itemgetter
 from itertools import chain
 import argparse
 
-parser = argparse.ArgumentParser(description="Advent of Code 2017: day 1")
-parser.add_argument('-f', '--file', dest='filename', type=str, help="Input sequence from file")
-parser.add_argument('-s', '--sequence', dest='sequence', type=str, help='Input sequence from console')
-parser.add_argument('-p', '--part', dest='part', choices=['1','2'], type=str, required=True, help="Part of the problem to solve")
 
 def part_1(captcha):
     """
@@ -34,6 +30,8 @@ def day_1(captcha, part='1'):
 
 if __name__ == '__main__':
     try:
+        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 1")
+        basic_arguments(parser)
         args = parser.parse_args()
 
         if args.sequence:
