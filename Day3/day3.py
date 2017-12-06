@@ -2,7 +2,6 @@ import sys
 sys.path.append('..')
 import argparse
 from common import basic_arguments
-from itertools import combinations
 
 def compute_square(number, square, grid):
     """
@@ -25,20 +24,37 @@ def compute_square(number, square, grid):
     else:
         return compute_square(number, 8*grid + square, grid+1)
 
-def reproduce_square_level(number):
+def positions(level):
     """
-    Given a number, compute its whole square level
+    Returns the relative positions from the center of the square
+    """
+    positions = list(range(level)) + [level] + list(range(level-1,-1,-1)) 
+    positions = positions[:-1] + positions[::-1]
+    positions = positions + positions[1:-1]
+    return positions[-level+1:] + positions[:-level+1]
+
+
+def compute_mahattan_distance(number):
+    """
+    Given a number, compute its manhattan distance:
+
+        1. get the level of the number
+        2. get the relative position from the center of each element
+        3. if the number is a corner, the distance will be level+1
+           otherwise, it will be level
     """
     max_elem, level = compute_square(number, 1, 1)
+    level_positions = positions(level)
+
     if level == 0:
-        level_items = range(1,2)
+        return 0
     else:
         level_items = range((max_elem - level*8) + 1, max_elem+1)
+        return level + level_positions[level_items.index(number)]
 
-    return list(level_items)
 
 def day_3(square_grid, part):
-    pass
+    return compute_mahattan_distance(square_grid)
 
 if __name__ == '__main__':
     try:

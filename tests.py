@@ -1,5 +1,6 @@
 from Day1.day1 import day_1
 from Day2.day2 import day_2
+from Day3.day3 import day_3
 from common import read_input_file_integers, read_input_file_matrix
 
 def test_day1_part1():
@@ -30,3 +31,10 @@ def test_day2_part2():
                  [3,8,6,5]], '2') == 9
 
     assert day_2(read_input_file_matrix('Day2/input'), '2') == 214
+
+def test_day3_part1():
+    assert day_3(1, '1') == 0
+    assert day_3(12, '1') == 3
+    assert day_3(23, '1') == 2
+    assert day_3(1024, '1') == 31
+    assert day_3(312051, '1') == 430
