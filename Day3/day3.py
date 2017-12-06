@@ -2,7 +2,9 @@ import sys
 sys.path.append('..')
 import argparse
 from common import basic_arguments
+from operator import itemgetter
 
+############################ functions for part 1 #############################################
 def compute_square(number, square, grid):
     """
     Thinking in the spiral as a recursive geometrical square lead us to the following function.
@@ -53,8 +55,80 @@ def compute_mahattan_distance(number):
         return level + level_positions[level_items.index(number)]
 
 
+############################ functions for part 2 #############################################
+def compute_next_coordinate(coords, level, direction):
+    """
+    Given a coordinates, compute the following ones in the spiral.
+
+    There are 4 possible directions:
+        - turn to the left  -> if the values of the coordinates are equal and positive
+        - turn down         -> if the abs values of the coordinates are equal. Column is negative
+        - turn to the right -> if the values of the coordinates are equal and negative
+        - turn up           -> if the abs values of the coordinates are equal. Column is positive
+    """
+    x, y = coords
+    if x == y:
+        if x > 0 and y > 0:
+            direction = 'left'
+        elif x <= 0 and y <= 0:
+            direction = 'right'
+    elif abs(x) == abs(y):
+        if y > 0:
+            direction = 'right'
+        elif y < 0:
+            direction = 'down'
+    elif direction == 'right' and y == level:
+        direction = 'up' # transition to a new square level
+
+    if direction == 'left':
+        next_x = x
+        next_y = y-1
+    elif direction == 'right':
+        next_x = x
+        next_y = y+1
+    elif direction == 'up':
+        next_x = x+1
+        next_y = y
+    elif direction == 'down':
+        next_x = x-1
+        next_y = y
+    else:
+        raise Exception('Unknown direction')
+
+    return (next_x, next_y, direction)
+
+
+def build_sum_adjacent_spiral(stopper):
+    """
+    Build an spiral where each element is the sum of its adjacent non-empty elements, diagonal included
+
+    Each element of the spiral has the following information:
+        - A tuple which represents its coordinates
+        - Its value
+        - Its level
+    """
+    level = 1
+    spiral = [((0,0), 1, 0)]
+    index = 0
+    direction = ''
+    while spiral[index][1] <= stopper:
+        x, y, direction = compute_next_coordinate(spiral[index][0], level, direction)
+        # filter adjacent elements
+        adjacent_elements = filter(lambda coords: abs(x - coords[0][0]) < 2 and
+                                                  abs(y - coords[0][1]) < 2,
+                                    spiral[-8*level:])
+        # sum its values
+        spiral.append(((x, y), sum(map(itemgetter(1), adjacent_elements)), level))
+        index += 1
+        if len(list(filter(lambda elem: elem[2] == level, spiral))) == 8*level:
+            level += 1
+
+    return spiral[-1][1]
+
+
 def day_3(square_grid, part):
-    return compute_mahattan_distance(square_grid)
+    return compute_mahattan_distance(square_grid) if part=='1' else \
+           build_sum_adjacent_spiral(square_grid)
 
 if __name__ == '__main__':
     try:

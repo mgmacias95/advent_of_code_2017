@@ -38,3 +38,10 @@ def test_day3_part1():
     assert day_3(23, '1') == 2
     assert day_3(1024, '1') == 31
     assert day_3(312051, '1') == 430
+
+def test_day3_part2():
+    assert day_3(20, '2') == 23
+    assert day_3(100, '2') == 122
+    assert day_3(200, '2') == 304
+    assert day_3(500, '2') == 747
+    assert day_3(312051, '2') == 312453
