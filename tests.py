@@ -1,7 +1,8 @@
 from Day1.day1 import day_1
 from Day2.day2 import day_2
 from Day3.day3 import day_3
-from common import read_input_file_integers, read_input_file_matrix
+from Day4.day4 import day_4
+from common import read_input_file_integers, read_input_file_matrix, read_input_file_words
 
 def test_day1_part1():
     assert day_1([1,1,2,2], '1') == 3
@@ -45,3 +46,9 @@ def test_day3_part2():
     assert day_3(200, '2') == 304
     assert day_3(500, '2') == 747
     assert day_3(312051, '2') == 312453
+
+def test_day4_part1():
+    assert day_4(['aa bb cc dd ee'], '1') == 1
+    assert day_4(['aa bb cc dd aa'], '1') == 0
+    assert day_4(['aa bb cc dd aaa'], '1') == 1
+    assert day_4(read_input_file_words('Day4/input'), '1') == 466

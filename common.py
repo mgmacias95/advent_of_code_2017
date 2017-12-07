@@ -34,6 +34,15 @@ def read_input_file_matrix(filepath):
 
     return str_2_imatrix(data.replace('\n','*').replace('\t',' ')[:-1]) # remove last \n
 
+def read_input_file_words(filepath):
+    """
+    Read a list of phrases from a file
+    """
+    with open(filepath) as f:
+        data = f.read().split('\n')[:-1]
+
+    return data
+
 def basic_arguments(parser):
     parser.add_argument('-f', '--file', dest='filename', type=str, help="Input sequence from file")
     parser.add_argument('-s', '--sequence', dest='sequence', type=str, help='Input sequence from console')
