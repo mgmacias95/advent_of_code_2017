@@ -52,3 +52,11 @@ def test_day4_part1():
     assert day_4(['aa bb cc dd aa'], '1') == 0
     assert day_4(['aa bb cc dd aaa'], '1') == 1
     assert day_4(read_input_file_words('Day4/input'), '1') == 466
+
+def test_day4_part2():
+    assert day_4(['abcde fghij'], '2') == 1
+    assert day_4(['abcde xyz ecdab'], '2') == 0
+    assert day_4(['a ab abc abd abf abj'], '2') == 1
+    assert day_4(['iiii oiii ooii oooi oooo'], '2') == 1
+    assert day_4(['oiii ioii iioi iiio'], '2') == 0
+    assert day_4(read_input_file_words('Day4/input'), '2') == 251

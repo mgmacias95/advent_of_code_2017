@@ -5,6 +5,10 @@ from common import basic_arguments, read_input_file_words
 from itertools import groupby
 
 def day_4(phrase, part):
+    if part == '2':
+        # sort each word of the input list
+        phrase = map(lambda x: ' '.join(map(lambda y: ''.join(sorted(y)), 
+                                                        x.split(' '))), phrase)
     # group equal words
     groups = ([list(g) for k,g in groupby(sorted(x.split(' ')))] 
                        for x in phrase)
