@@ -15,7 +15,7 @@ def day_6(banks, part):
         max_blocks = max(last_config)
         index = last_config.index(max_blocks)
         last_config[index] = 0
-        
+
         for i in range(max_blocks):
             index = (index+1)%len(last_config)
             last_config[index] += 1
@@ -26,7 +26,7 @@ def day_6(banks, part):
 
 if __name__ == '__main__':
     try:
-        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 3")
+        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 6")
         basic_arguments(parser)
         args = parser.parse_args()
 

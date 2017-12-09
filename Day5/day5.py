@@ -15,7 +15,7 @@ def day_5(jumps, part):
 
 if __name__ == '__main__':
     try:
-        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 3")
+        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 5")
         basic_arguments(parser)
         args = parser.parse_args()
 

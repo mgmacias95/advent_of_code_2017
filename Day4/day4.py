@@ -19,7 +19,7 @@ def day_4(phrase, part):
 
 if __name__ == '__main__':
     try:
-        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 3")
+        parser = argparse.ArgumentParser(description="Advent of Code 2017: day 4")
         basic_arguments(parser)
         args = parser.parse_args()
 
