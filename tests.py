@@ -2,6 +2,7 @@ from Day1.day1 import day_1
 from Day2.day2 import day_2
 from Day3.day3 import day_3
 from Day4.day4 import day_4
+from Day5.day5 import day_5
 from common import read_input_file_integers, read_input_file_matrix, read_input_file_words
 
 def test_day1_part1():
@@ -60,3 +61,7 @@ def test_day4_part2():
     assert day_4(['iiii oiii ooii oooi oooo'], '2') == 1
     assert day_4(['oiii ioii iioi iiio'], '2') == 0
     assert day_4(read_input_file_words('Day4/input'), '2') == 251
+
+def test_day5_part1():
+    assert day_5([0,3,0,1,-3], '1') == 5
+    assert day_5(read_input_file_matrix('Day5/input', True), '1') == 373543

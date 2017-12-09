@@ -3,13 +3,14 @@ sys.path.append('..')
 import argparse
 from common import basic_arguments, read_input_file_matrix, str_2_imatrix
 
-def iter_jumps(jumps, position=0, n_jumps=0):
-    if position >= len(jumps):
-        return n_jumps
-    else:
-        print("Position: {}. Jumps: {}. Number of jumps: {}".format(position, jumps, n_jumps))
+def iter_jumps(jumps):
+    n_jumps, position = 0, 0
+    while position < len(jumps):
         jumps[position] += 1
-        iter_jumps(jumps, position+jumps[position]-1, n_jumps+1)
+        position += jumps[position] - 1
+        n_jumps += 1
+    return n_jumps
+
 
 def day_5(jumps, part):
     return iter_jumps(jumps)
