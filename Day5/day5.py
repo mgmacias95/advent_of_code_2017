@@ -3,17 +3,15 @@ sys.path.append('..')
 import argparse
 from common import basic_arguments, read_input_file_matrix, str_2_imatrix
 
-def iter_jumps(jumps):
+def day_5(jumps, part):
     n_jumps, position = 0, 0
     while position < len(jumps):
-        jumps[position] += 1
-        position += jumps[position] - 1
+        old_jump = jumps[position] 
+        jumps[position] = old_jump - 1 if part=='2' and old_jump >= 3 \
+                                       else old_jump + 1
+        position += old_jump
         n_jumps += 1
     return n_jumps
-
-
-def day_5(jumps, part):
-    return iter_jumps(jumps)
 
 if __name__ == '__main__':
     try:

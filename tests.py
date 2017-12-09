@@ -65,3 +65,7 @@ def test_day4_part2():
 def test_day5_part1():
     assert day_5([0,3,0,1,-3], '1') == 5
     assert day_5(read_input_file_matrix('Day5/input', True), '1') == 373543
+
+def test_day5_part2():
+    assert day_5([0,3,0,1,-3], '2') == 10
+    assert day_5(read_input_file_matrix('Day5/input', True), '2') == 27502966
